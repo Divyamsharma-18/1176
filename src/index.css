@@ -1,0 +1,405 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 40% 96.1%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 221 83% 53%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 48 96% 53%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221 83% 53%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 48 96% 53%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Source Sans Pro', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+  }
+}
+
+/* Import pixelated font */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+.night-sky {
+  background-color: #0a1128;
+  background-image: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Create stars - decreased size for better visibility */
+.night-sky::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 50px 200px, white, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 100px 150px, white, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 150px 50px, white, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 250px 350px, white, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 350px 100px, white, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 400px 200px, white, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 450px 300px, white, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 500px 100px, white, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 550px 250px, white, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 600px 150px, white, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 650px 350px, white, rgba(0,0,0,0)),
+    radial-gradient(2px 2px at 700px 50px, white, rgba(0,0,0,0));
+  background-repeat: repeat;
+  background-size: 750px 750px;
+  animation: twinkling 8s infinite linear;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Second set of stars with different animation timing - smaller size */
+.night-sky::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(1.5px 1.5px at 25px 150px, white, rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 75px 100px, white, rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 175px 75px, white, rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 275px 300px, white, rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 325px 150px, white, rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 425px 225px, white, rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 475px 275px, white, rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 525px 75px, white, rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 575px 225px, white, rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 625px 125px, white, rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 675px 325px, white, rgba(0,0,0,0));
+  background-repeat: repeat;
+  background-size: 750px 750px;
+  animation: twinkling 12s infinite linear;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background-color: #fff;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.firefly {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background-color: rgba(255, 255, 100, 0.8);
+  border-radius: 50%;
+  box-shadow: 0 0 3px 1px rgba(255, 255, 100, 0.3);
+  z-index: 1;
+}
+
+@keyframes twinkling {
+  0% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.2;
+  }
+}
+
+.pokemon-font {
+  font-family: 'Press Start 2P', cursive;
+  letter-spacing: 1px;
+}
+
+.pixelated-heading {
+  font-family: 'Press Start 2P', cursive;
+  color: #78c4ff;
+  text-shadow: 2px 2px 0 #235789;
+  letter-spacing: 1px;
+  line-height: 1.5;
+}
+
+.pixelated-btn {
+  font-family: 'Press Start 2P', cursive;
+  background-color: #ff3e3e;
+  border: 4px solid #ffffff;
+  color: white;
+  padding: 0.5rem 1rem;
+  text-transform: uppercase;
+  transition: all 0.2s;
+  text-shadow: 2px 2px 0 #b50000;
+  box-shadow: 0 4px 0 #b50000, 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.pixelated-btn:hover {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #b50000, 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.pixelated-btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 #b50000, 0 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+.speech-bubble {
+  position: relative;
+  background: #ffffff;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.speech-bubble:after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border: 20px solid transparent;
+  border-right-color: #ffffff;
+  border-left: 0;
+  margin-top: -20px;
+  margin-left: -20px;
+}
+
+/* Improved Card Hover Effects with shadows */
+.pixel-card {
+  background-color: #1a2b47;
+  border: 2px solid #3b4cca;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.pixel-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 25px -5px rgba(59, 76, 202, 0.6), 0 0 20px rgba(59, 76, 202, 0.4);
+  border-color: rgba(59, 76, 202, 0.8);
+}
+
+/* Normal card hover effect */
+.pixel-card.normal-pokemon:hover {
+  box-shadow: 0 10px 25px -5px rgba(59, 76, 202, 0.6), 0 0 20px rgba(59, 76, 202, 0.4);
+  border-color: #3b4cca;
+}
+
+/* Golden border and glow for rare pokemon */
+.pixel-card.rare-pokemon {
+  border: 2px solid #B69E31;
+  background-color: #1a2b47;
+  background-image: linear-gradient(145deg, rgba(182, 158, 49, 0.1) 0%, rgba(37, 51, 85, 1) 100%);
+}
+
+.pixel-card.rare-pokemon:hover {
+  box-shadow: 0 10px 25px -5px rgba(182, 158, 49, 0.6), 0 0 20px rgba(255, 215, 0, 0.4);
+  border-color: #ffde00;
+}
+
+.pixel-card.legendary-pokemon {
+  border: 3px solid #ffde00;
+  background-color: #1a2b47;
+  background-image: linear-gradient(145deg, rgba(255, 223, 0, 0.15) 0%, rgba(37, 51, 85, 1) 100%);
+}
+
+.pixel-card.legendary-pokemon:hover {
+  box-shadow: 0 10px 30px -5px rgba(255, 223, 0, 0.7), 0 0 25px rgba(255, 223, 0, 0.5);
+  border-color: #ffde00;
+}
+
+.pixel-card:before {
+  content: '';
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 3px;
+  opacity: 0;
+  transition: opacity 0.3s ease-out;
+}
+
+.pixel-card:hover:before {
+  opacity: 1;
+}
+
+.pixel-button {
+  font-family: 'Press Start 2P', cursive;
+  background-color: #ff3e3e;
+  border: 4px solid #ffffff;
+  color: white;
+  padding: 0.75rem 1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 0 #b50000, 0 8px 15px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s;
+}
+
+.pixel-button:hover {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #b50000, 0 6px 10px rgba(0, 0, 0, 0.3);
+}
+
+.pixel-button:active {
+  transform: translateY(4px);
+  box-shadow: 0 0 0 #b50000, 0 3px 5px rgba(0, 0, 0, 0.3);
+}
+
+.trainer-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid #3b4cca;
+  overflow: hidden;
+  background-color: #1a2b47;
+}
+
+/* Star decoration for rare pokemon */
+.star-decoration {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  color: #ffde00;
+  font-size: 18px;
+  text-shadow: 0 0 8px rgba(255, 222, 0, 0.7);
+  animation: pulse 2s infinite ease-in-out;
+  z-index: 5;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+}
+
+/* Adopted badge styling */
+.adopted-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background-color: #ff3e3e;
+  color: white;
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 12px;
+  z-index: 10;
+  font-family: 'Press Start 2P', cursive;
+  transform: rotate(-10deg);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* Form styling to match theme */
+.auth-form {
+  background-color: #1a2b47;
+  border: 2px solid #3b4cca;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Input styling to match theme */
+.auth-input {
+  background-color: #102340;
+  border: 1px solid #3b4cca;
+  color: white;
+}
+
+/* Footer styles */
+.footer {
+  background-color: #0a1128;
+  border-top: 1px solid #3b4cca;
+  padding: 1rem 0;
+  width: 100%;
+}
+
+.heart-icon {
+  animation: heartBeat 1.5s infinite ease-in-out;
+  color: #ff3e3e;
+  display: inline-block;
+  margin: 0 0.25rem;
+}
+
+@keyframes heartBeat {
+  0%, 100% {
+    transform: scale(1);
+  }
+}
